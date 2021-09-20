@@ -1,8 +1,8 @@
 /**
  *  BOND Fan With Direction
  *
- *  Copyright 2019-2020 Dominick Meglio
- *
+ *  Copyright 2019-2020 Dominick Meglio*
+ *  edited: 9-19-2021 Shane Burkhardt - Add toggleDirection 
  */
 
 metadata {
@@ -21,6 +21,7 @@ metadata {
 		command "fixSpeed", [[name:"Speed*", type: "ENUM", description: "Speed", constraints: ["off","low", "medium-low", "medium", "medium-high", "high", "on"] ] ]
 		command "fixDirection", [[name:"Direction*", type: "ENUM", description: "Direction", constraints: ["forward","reverse"] ] ]
 		command "toggle"
+	    	command "toggleDirection". [[name:"Direction", type: "ENUM", description: "Direction"]]
     }
 }
 
@@ -68,6 +69,10 @@ def handleLightLevel(device, level)
 
 def handleDim(device, duration) {
 	parent.handleDim(device, duration)
+}
+
+def toggleDirection(device) {
+	parent.toggleDirection(device)
 }
 
 def handleStartDimming(device) {
