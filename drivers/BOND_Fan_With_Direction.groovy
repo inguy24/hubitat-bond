@@ -21,7 +21,7 @@ metadata {
 		command "fixSpeed", [[name:"Speed*", type: "ENUM", description: "Speed", constraints: ["off","low", "medium-low", "medium", "medium-high", "high", "on"] ] ]
 		command "fixDirection", [[name:"Direction*", type: "ENUM", description: "Direction", constraints: ["forward","reverse"] ] ]
 		command "toggle"
-	    	command "toggleDirection". [[name:"Direction", type: "ENUM", description: "Direction"]]
+	    	command "toggleDirection"
     }
 }
 
@@ -71,8 +71,11 @@ def handleDim(device, duration) {
 	parent.handleDim(device, duration)
 }
 
-def toggleDirection(device) {
-	parent.toggleDirection(device)
+def toggleDirection() {
+	if (device.currentValue("direction") == "forward")
+		parent.handleDirection(device,"reverse")
+	else
+		parent.setDirection(device,"forward")
 }
 
 def handleStartDimming(device) {
