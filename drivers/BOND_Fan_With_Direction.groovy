@@ -75,7 +75,7 @@ def toggleDirection() {
 	if (device.currentValue("direction") == "forward")
 		parent.handleDirection(device,"reverse")
 	else
-		parent.setDirection(device,"forward")
+		parent.handleDirection(device,"forward")
 }
 
 def handleStartDimming(device) {
